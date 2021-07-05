@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import { Route } from "react-router-dom";
 import axios from "axios";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer/index";
@@ -119,8 +119,7 @@ function App() {
   };
 
   return (
-    <Router>
-          <AppContext.Provider
+    <AppContext.Provider
       value={{
         items,
         cartItems,
@@ -142,7 +141,7 @@ function App() {
 
         <Header onClickCart={() => setCartOpened(true)} />
 
-        <Route path="/" exact component={Home}>
+        <Route path={process.env.PUBLIC_URL + '/'} exact component={Home}>
           <Home
             items={items}
             cartItems={cartItems}
@@ -155,16 +154,15 @@ function App() {
           />
         </Route>
 
-        <Route path="/favorites" exact component={Favorites}>
+        <Route path={process.env.PUBLIC_URL + '/favorites'} exact>
           <Favorites />
         </Route>
 
-        <Route path="/orders" exact component={Orders}>
+        <Route path={process.env.PUBLIC_URL + '/orders'} exact >
           <Orders />
         </Route>
       </div>
     </AppContext.Provider>
-    </Router>
   );
 }
 
