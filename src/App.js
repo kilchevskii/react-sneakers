@@ -23,9 +23,9 @@ function App() {
       try {
         const [cartResponse, favoritesResponse, itemsResponse] =
           await Promise.all([
-            axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/cart"),
-            axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/favorites"),
-            axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/items"),
+            axios.get('https://60dec4a4abbdd9001722d024.mockapi.io/cart'),
+            axios.get('https://60dec4a4abbdd9001722d024.mockapi.io/favorites'),
+            axios.get('https://60dec4a4abbdd9001722d024.mockapi.io/items'),
           ]);
         // const cartResponse = await axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/cart");
         // const favoritesResponse = await axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/favorites");
@@ -57,7 +57,7 @@ function App() {
       } else {
         setCartItems((prev) => [...prev, obj]);
         const {data} = await axios.post(
-          "https://60dec4a4abbdd9001722d024.mockapi.io/cart",
+          'https://60dec4a4abbdd9001722d024.mockapi.io/cart',
           obj
         );
         setCartItems((prev) => prev.map(item => {
@@ -96,7 +96,7 @@ function App() {
         );
       } else {
         const { data } = await axios.post(
-          "https://60dec4a4abbdd9001722d024.mockapi.io/favorites",
+          'https://60dec4a4abbdd9001722d024.mockapi.io/favorites',
           obj
         );
         setFavorites((prev) => [...prev, data]);
@@ -137,7 +137,7 @@ function App() {
 
         <Header onClickCart={() => setCartOpened(true)} />
 
-        <Route path="/" exact>
+        <Route path="" exact>
           <Home
             items={items}
             cartItems={cartItems}
@@ -150,11 +150,11 @@ function App() {
           />
         </Route>
 
-        <Route path="/favorites" exact>
+        <Route path="favorites" exact>
           <Favorites />
         </Route>
 
-        <Route path="/orders" exact>
+        <Route path="orders" exact>
           <Orders />
         </Route>
       </div>
