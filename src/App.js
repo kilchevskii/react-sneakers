@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route } from "react-router-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer/index";
@@ -119,7 +119,8 @@ function App() {
   };
 
   return (
-    <AppContext.Provider
+    <Router>
+          <AppContext.Provider
       value={{
         items,
         cartItems,
@@ -163,6 +164,7 @@ function App() {
         </Route>
       </div>
     </AppContext.Provider>
+    </Router>
   );
 }
 
