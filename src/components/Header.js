@@ -1,12 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useCart } from '../hooks/useCart'
+
 
 function Header(props) {
   const { totalPrice } = useCart();
 
   return (
     <header className="d-flex justify-between align-center p-40">
-      <Link to="/"  activeOnlyWhenExact={true}>
+      <Link to="/" >
         <div className="d-flex align-center">
           <img width={40} height={40} src="img/logo.png" alt="Logotype" />
           <div>
