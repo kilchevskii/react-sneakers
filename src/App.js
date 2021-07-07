@@ -23,9 +23,9 @@ function App() {
       try {
         const [cartResponse, favoritesResponse, itemsResponse] =
           await Promise.all([
-            axios.get("https://api.fake.rest/80dd1fe1-77ac-4857-8f98-e3437fff27a0/items"),
-            axios.get("https://api.fake.rest/80dd1fe1-77ac-4857-8f98-e3437fff27a0/favorites"),
-            axios.get("https://api.fake.rest/80dd1fe1-77ac-4857-8f98-e3437fff27a0/cart"),
+            axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/items"),
+            axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/favorites"),
+            axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/cart"),
           ]);
         // const cartResponse = await axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/cart");
         // const favoritesResponse = await axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/favorites");
@@ -54,12 +54,12 @@ function App() {
           prev.filter((item) => Number(item.parentId) !== Number(obj.id))
         );
         await axios.delete(
-          `https://api.fake.rest/80dd1fe1-77ac-4857-8f98-e3437fff27a0/cart/${findItem.id}`
+          `https://60dec4a4abbdd9001722d024.mockapi.io/cart/${findItem.id}`
         );
       } else {
         setCartItems((prev) => [...prev, obj]);
         const { data } = await axios.post(
-          "https://api.fake.rest/80dd1fe1-77ac-4857-8f98-e3437fff27a0/cart",
+          "https://60dec4a4abbdd9001722d024.mockapi.io/cart",
           obj
         );
         setCartItems((prev) =>
@@ -81,7 +81,7 @@ function App() {
 
   const onRemoveItem = (id) => {
     try {
-      axios.delete(`https://api.fake.rest/80dd1fe1-77ac-4857-8f98-e3437fff27a0/cart/${id}`);
+      axios.delete(`https://60dec4a4abbdd9001722d024.mockapi.io/cart/${id}`);
       setCartItems((prev) => prev.filter((item) => item.id !== id));
     } catch (error) {
       alert("Ошибка при удалении из корзины");
@@ -93,14 +93,14 @@ function App() {
     try {
       if (favorites.find((favObj) => Number(favObj.id) === Number(obj.id))) {
         axios.delete(
-          `https://api.fake.rest/80dd1fe1-77ac-4857-8f98-e3437fff27a0/favorites/${obj.id}`
+          `https://60dec4a4abbdd9001722d024.mockapi.io/favorites/${obj.id}`
         );
         setFavorites((prev) =>
           prev.filter((item) => Number(item.id) !== Number(obj.id))
         );
       } else {
         const { data } = await axios.post(
-          "https://api.fake.rest/80dd1fe1-77ac-4857-8f98-e3437fff27a0/favorites",
+          "https://60dec4a4abbdd9001722d024.mockapi.io/favorites",
           obj
         );
         setFavorites((prev) => [...prev, data]);
