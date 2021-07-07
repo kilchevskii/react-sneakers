@@ -23,9 +23,9 @@ function App() {
       try {
         const [cartResponse, favoritesResponse, itemsResponse] =
           await Promise.all([
-            axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/items"),
-            axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/favorites"),
             axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/cart"),
+            axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/favorites"),
+            axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/items"),
           ]);
         // const cartResponse = await axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/cart");
         // const favoritesResponse = await axios.get("https://60dec4a4abbdd9001722d024.mockapi.io/favorites");
